@@ -1,0 +1,121 @@
+.search {
+    width: 250px;
+    height: 46px;
+    position: relative;
+    border-radius: 92px;
+    display: flex;
+    border: transparent 1.5px solid;
+    color: var(---black);
+    font-size: 1.6rem;
+    padding-left: 16px;
+    background-color: #f1f1f2;
+
+    input {
+        background-color: transparent;
+        flex: 1;
+        caret-color: rgba(254, 44, 85, 1);
+        height: 100%;
+        width: 180px;
+    }
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 34, 0.75);
+    }
+
+    &::after {
+        content: "";
+        background-color: rgba(22, 24, 35, 0.34);
+        position: absolute;
+        top: 9px;
+        width: 1px;
+        right: var(--search-btn-width);
+        height: 28px;
+    }
+
+    &:focus-within {
+        border: 1.5px solid rgba(22, 24, 34, 0.2);
+    }
+}
+.search-btn {
+    border-top-right-radius: 92px;
+    border-bottom-right-radius: 92px;
+    position: relative;
+    width: var(--search-btn-width);
+    height: 100%;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+    background-color: transparent;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+.clear,
+.loading {
+    z-index: 9999;
+    position: absolute;
+    top: 50%;
+    display: block;
+    font-size: 1.6rem;
+    color: rgba(22, 24, 35, 0.34);
+    right: calc(var(--search-btn-width) + 16px);
+    transform: translateY(-50%);
+}
+.loading {
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+.search-results {
+    width: 360px;
+    margin-top: -2px;
+    // min-height: min((100vh - 96px) - 60px, 734px);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #fff;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.15);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+.search-title {
+    height: 31px;
+    color: rgba(22, 24, 35, 0.5);
+    padding: 5px 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+@media (min-width: 740px) {
+    .search {
+        width: 360px;
+    }
+}
+@media (min-width: 1113px) {
+}
+@media (min-width: 740px) and (max-width: 1023px) {
+}
+@media (min-width: 1024px) and (max-width: 1239px) {
+}
