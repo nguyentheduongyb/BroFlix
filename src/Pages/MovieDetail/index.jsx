@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./MovieDetail.module.scss";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faSave, faStar } from "@fortawesome/free-solid-svg-icons";
@@ -30,14 +29,13 @@ function MovieDetail() {
             setMovie(data);
         };
         fetchMovie();
-    }, [fetch]);
+    }, [id]);
     const [sectionToggle, setSectionToggle] = useState({
         first: "On TV",
         second: "In Theaters",
         third: "To Day",
         forth: "This Week",
     });
-    console.log(movie);
     return (
         <Fragment>
             <Shortcut />

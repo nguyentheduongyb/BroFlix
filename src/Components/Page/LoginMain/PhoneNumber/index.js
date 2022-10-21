@@ -1,66 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import ClassNames from "classnames/bind";
 import styles from "./PhoneNumber.module.scss";
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const cx = ClassNames.bind(styles);
 
-const initState = {
-    value: "",
-    values: [],
-};
-
-const SET_LOGIN = "set";
-const ADD_LOGIN = "add";
-const REMOVE_LOGIN = "remove";
-
-const reducer = (state, action) => {
-    switch (action.type) {
-        case SET_LOGIN:
-            return {
-                ...state,
-                value: action.value,
-            };
-        case ADD_LOGIN:
-            return {
-                ...state,
-                values: [...state.jobs, action.value],
-            };
-        case REMOVE_LOGIN:
-            const newValues = [...state.jobs];
-            newValues.splice(action.index, 1);
-            return {
-                ...state,
-                values: newValues,
-            };
-        default:
-            throw new Error("Invalid action type");
-    }
-};
 function PhoneNumber() {
-    const [state, dispatch] = useReducer(reducer, initState);
-
-    const setUser = (value) => {
-        return {
-            type: SET_LOGIN,
-            value,
-        };
-    };
-    const addUser = (value) => {
-        return {
-            type: ADD_LOGIN,
-            value,
-        };
-    };
-    const removeUser = (value) => {
-        return {
-            type: REMOVE_LOGIN,
-            value,
-        };
-    };
     const [number, setNumber] = useState("");
     const [password, setPassword] = useState("");
     const [data, setData] = useState({
@@ -70,9 +18,16 @@ function PhoneNumber() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setData({ number: number, password: password });
+        return handleLogin(number, password);
     };
-    console.log(data);
-
+    const handleLogin = (number, password) => {
+        console.log(data);
+        if (number === "123" && password === "123") {
+            console.log("true");
+        } else {
+            console.log("false");
+        }
+    };
     return (
         <Fragment>
             <form className={cx("form")}>
@@ -93,9 +48,6 @@ function PhoneNumber() {
                         aria-describedby="emailHelp"
                         placeholder="Phone Number"
                     />
-                    {/* <small id="emailHelp" class="form-text text-muted">
-                        We'll never share your email with anyone else.
-                    </small> */}
                 </div>
                 <div className={cx("form-group")}>
                     <input

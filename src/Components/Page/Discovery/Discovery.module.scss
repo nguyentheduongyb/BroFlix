@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 160px;
+    font-size: 1rem;
     background-position: center;
 }
 .content {
@@ -28,8 +29,7 @@
 @media (min-width: 1113px) {
     .content {
         width: 1200px;
-
-        padding: 40px 0;
+        padding: 40px;
     }
 }
 @media (min-width: 740px) and (max-width: 1023px) {

@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 // import PhoneNumber from "~/Components/Page/LoginMain/PhoneNumber";
-import WithFb from "~/Components/Page/LoginMain/LoginFb";
 import PhoneNumber from "../LoginMain/PhoneNumber";
 
 const cx = ClassNames.bind(styles);

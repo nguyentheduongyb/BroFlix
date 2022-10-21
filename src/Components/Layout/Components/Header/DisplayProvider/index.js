@@ -6,6 +6,13 @@ function DisplayProvider({ children }) {
     const [display, setDisplay] = useState(false);
     const [type, setType] = useState("main");
     const [isLogin, setIsLogin] = useState(false);
+    const [number, setNumber] = useState("");
+    const [password, setPassword] = useState("");
+    const [data, setData] = useState({
+        number: number,
+        password: password,
+    });
+
     const toggleDisplay = () => {
         setDisplay(!display);
     };
@@ -17,13 +24,13 @@ function DisplayProvider({ children }) {
     const displayForm = (e) => {
         setType(e.type);
     };
-    console.log(type);
     const item = {
         display,
         toggleDisplay,
         toggleClose,
         type,
         isLogin,
+        setIsLogin,
         displayForm,
     };
     return (

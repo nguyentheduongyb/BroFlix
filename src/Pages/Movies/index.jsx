@@ -13,7 +13,7 @@ function Movies() {
     const [movies, setMovies] = useState([]);
     useEffect(() => {
         const fetchMovies = async () => {
-            const { data } = await tmdb.get("tv/popular/");
+            const { data } = await tmdb.get("movie/popular/");
             setMovies(data.results);
         };
         fetchMovies();
@@ -25,7 +25,7 @@ function Movies() {
                 {movies.map((item, index) => (
                     <li key={index} className={cx("col l-2 c-4 m-4")}>
                         <div>
-                            <Link>
+                            <Link to={`/movie/detail/${item.id}`}>
                                 <img
                                     className={cx("poster")}
                                     src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${item.poster_path}`}
@@ -42,7 +42,6 @@ function Movies() {
             <Link className={cx("load", "m-b-48 m-t-24")}>
                 <button className={cx("btn")}>Load More</button>
             </Link>
-            <LoginFb />
         </div>
     );
 }

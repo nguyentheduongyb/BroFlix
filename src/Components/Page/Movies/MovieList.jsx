@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import { useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "~/Components/Page/Movies/MovieCard.jsx";
 import styles from "./MovieList.module.scss";
 import tmdb from "~/API/tmdb";
 import { request } from "~/API/request";

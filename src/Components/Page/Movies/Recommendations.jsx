@@ -2,17 +2,18 @@ import classNames from "classnames/bind";
 import styles from "./Recommendations.module.scss";
 import { useState, useEffect } from "react";
 import tmdb from "~/API/tmdb";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 function Recommendations({ id, path }) {
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        const fetchcasts = async () => {
+        const fetchCasts = async () => {
             const { data } = await tmdb.get(`${path}/${id}/recommendations`);
             setMovies(data.results);
         };
-        fetchcasts();
-    }, []);
+        fetchCasts();
+    }, [id]);
     return (
         <div className={cx("wrapper", "grid m-t-24")}>
             <h2 className="m-b-24">Recommendations</h2>
@@ -22,15 +23,16 @@ function Recommendations({ id, path }) {
                         return (
                             <li key={index} className={cx("item")}>
                                 <div>
-                                    <a href="#">
+                                    <Link to={`/${path}/detail/${item.id}`}>
                                         <img
                                             className={cx("poster")}
                                             src={`https://www.themoviedb.org/t/p/w250_and_h141_face/${item.backdrop_path}`}
+                                            alt=""
                                         />
                                         <p className={cx("name")}>
                                             {item.original_title}
                                         </p>
-                                    </a>
+                                    </Link>
                                     <p className={cx("popular")}>
                                         Popularity: {item.popularity}
                                     </p>

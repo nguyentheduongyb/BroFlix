@@ -9,10 +9,13 @@
 }
 @media (min-width: 1113px) {
     .container {
-        width: var(--default-layout-width, 1280px);
+        width: 1200px;
     }
 }
 @media (min-width: 740px) and (max-width: 1023px) {
 }
 @media (min-width: 1024px) and (max-width: 1239px) {
+    .container {
+        width: 1000px;
+    }
 }

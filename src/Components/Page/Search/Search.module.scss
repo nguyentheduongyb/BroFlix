@@ -16,6 +16,7 @@
         caret-color: rgba(254, 44, 85, 1);
         height: 100%;
         width: 180px;
+        padding-right: 40px;
     }
     input:not(:placeholder-shown) ~ .search-btn {
         color: rgba(22, 24, 34, 0.75);

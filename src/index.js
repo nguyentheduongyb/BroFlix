@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "~/App";
+import App from "~/App.js";
 import GlobalStyles from "./Components/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
 import { DisplayProvider } from "~/Components/Layout/Components/Header/DisplayProvider";
@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <DisplayProvider>
         <GlobalStyles>
-            <App />
+            <App></App>
         </GlobalStyles>
     </DisplayProvider>,
 );

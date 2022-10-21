@@ -2,13 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./Shortcut.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Tippy from "@tippyjs/react";
-import {
-    faArrowAltCircleDown,
-    faCaretDown,
-    faCircle,
-    faCircleArrowDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);
 

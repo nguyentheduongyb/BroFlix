@@ -1,6 +1,4 @@
-import { Fragment } from "react";
 import { useState, useEffect } from "react";
-import MovieCard from "~/Components/Page/Movies/MovieCard";
 import classNames from "classnames/bind";
 import styles from "./TvShow.module.scss";
 import tmdb from "~/API/tmdb";
@@ -23,7 +21,7 @@ function Movies() {
                 {movies.map((item, index) => (
                     <li key={index} className={cx("col l-2 c-4 m-4")}>
                         <div>
-                            <Link>
+                            <Link to={`/tv/detail/${item.id}`}>
                                 <img
                                     className={cx("poster")}
                                     src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${item.poster_path}`}

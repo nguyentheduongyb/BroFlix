@@ -8,12 +8,12 @@ const cx = classNames.bind(styles);
 
 function MovieItems(item) {
     const movie = item.item;
-    console.log(movie);
     return (
-        <Link to={`/${movie.name}`} className={cx("wrapper")}>
+        <Link to={`/tv/detail/${movie.id}`} className={cx("wrapper")}>
             <img
                 className={cx("image")}
                 src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.backdrop_path}`}
+                alt="Anh"
             />
             <div className={cx("info")}>
                 <p className={cx("title")}>

@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import CastItem from "./CastItem";
 import styles from "./CastList.module.scss";
 import tmdb from "~/API/tmdb";
-import { request } from "~/API/request";
-import axios from "axios";
 
 import TrailerMovie from "../Movies/TrailerMovie";
 import Recommendations from "../Movies/Recommendations";
@@ -20,7 +18,7 @@ function ListCast({ id, path, fetch }) {
             setCastList(data.cast);
         };
         fetchcasts();
-    }, [fetch]);
+    }, [id]);
     return (
         <div className={cx("wrapper", "l-9")}>
             <div className={cx("inner")}>

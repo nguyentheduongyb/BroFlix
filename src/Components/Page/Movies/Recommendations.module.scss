@@ -35,7 +35,7 @@
     }
 }
 .list {
-    width: 100%;
+    width: 100vw;
     border-radius: 4px;
     display: flex;
     overflow: auto;
@@ -80,10 +80,16 @@ img {
     .item {
         margin: 0 8px;
     }
+    .list {
+        width: 100%;
+    }
 }
 @media (min-width: 1113px) {
     .container {
-        width: var(--default-layout-width, 1280px);
+        width: 1200px;
+    }
+    .list {
+        width: 100%;
     }
 }
 @media (min-width: 740px) and (max-width: 1023px) {

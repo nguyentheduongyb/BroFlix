@@ -1,11 +1,10 @@
 import Tippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
 
 import { Wrapper as PopperWrapper } from "~/Components/Page/Popper";
-import MovieItems from "~/Components/Layout/Components/MovieItems";
+import MovieItems from "~/Components/Page/MovieItems";
 
 import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
@@ -54,19 +53,27 @@ function Search(props) {
             setInputValue(e.target.value);
         }
     };
-    useEffect(() => {});
     const handleBlur = () => {
         setBlur(true);
-        setSearchResults([]);
     };
     const handleRemoveInput = () => {
+        setSearchResults([]);
         setInputValue("");
         input.current.focus();
     };
+    const handleClick = () => {
+        setBlur(false);
+    };
+    const handleClickChild = () => {
+        setInputValue("");
+        setSearchResults([]);
+    };
+
     return (
         <Tippy
             visible={searchResults.length > 0 || inputValue}
             interactive
+            appendTo={() => document.body}
             onClickOutside={handleBlur}
             render={(attrs) => (
                 <div className={cx("search-results")} tabIndex="-1" {...attrs}>
@@ -80,7 +87,11 @@ function Search(props) {
                                     : "Movies"}
                             </h4>
                             {searchResults.map((item, index) => (
-                                <MovieItems key={index} item={item} />
+                                <MovieItems
+                                    // onClick={handleClickChild}
+                                    key={index}
+                                    item={item}
+                                />
                             ))}
                         </PopperWrapper>
                     )}
@@ -90,7 +101,7 @@ function Search(props) {
             <div className={cx("search")}>
                 <input
                     ref={input}
-                    onBlur={handleBlur}
+                    onClick={handleClick}
                     onChange={(e) => handleSearch(e)}
                     type="text"
                     placeholder="Nhập vào 1 thứ gì đó"
@@ -114,10 +125,5 @@ function Search(props) {
         </Tippy>
     );
 }
-Search.propTypes = {
-    onSubmit: PropTypes.func,
-};
-Search.defaultProps = {
-    onSubmit: null,
-};
+
 export default Search;
