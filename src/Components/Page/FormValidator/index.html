@@ -34,7 +34,8 @@
 
         <div class="form-group">
             <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu"
+                type="password" class="form-control">
             <span class="form-message"></span>
         </div>
 
@@ -54,7 +55,7 @@
                 Validator.minLength('#password', 6),
                 Validator.isRequired('#password_confirmation'),
 
-                Validator.isConfirmed('#password_confirmation', function() {
+                Validator.isConfirmed('#password_confirmation', function () {
                     return document.querySelector('#password').value
                 })
             ]

@@ -14,7 +14,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { DisplayContext } from "~/Components/Layout/Components/Header/DisplayProvider";
+import { DisplayContext } from "~/Components/Layout/DisplayHeader";
+import PhoneNumber from "./PhoneNumber";
+import LoginWithFacebook from "../Login/FacebookLogin/Facebook";
 
 const items = [
     {
@@ -26,11 +28,13 @@ const items = [
         type: "phone",
         title: "Continue with Phone Number",
         icon: <FontAwesomeIcon icon={faUser} />,
+        form: <PhoneNumber />,
     },
     {
         type: "facebook",
         title: "Continue with Facebook",
         icon: <FontAwesomeIcon icon={faFacebook} />,
+        form: <LoginWithFacebook />,
     },
     {
         type: "google",
@@ -54,7 +58,6 @@ const items = [
     },
 ];
 const cx = classnames.bind(styles);
-
 function Login() {
     const display = useContext(DisplayContext);
     return (
@@ -64,7 +67,10 @@ function Login() {
                     <Link
                         key={index}
                         onClick={() => {
-                            display.displayForm({ type: item.type });
+                            display.typeLogin({
+                                type: item.type,
+                                form: item.form,
+                            });
                         }}
                     >
                         <li className={cx("item")}>

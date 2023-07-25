@@ -16,22 +16,28 @@
     margin-left: 6px;
 }
 .group {
-    border-radius: 4px;
-    background: linear-gradient(90deg, rgb(211, 63, 63), rgb(93, 75, 75));
-    background: var(--defaut-bg-color);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: #fff;
     width: 148px;
     display: none;
     position: absolute;
     left: 0;
-    margin-top: 8px;
+    margin-top: 9px;
 }
 .sub-item {
     padding-left: 16px;
     width: 100%;
     height: 32px;
 
-    &:hover {
-        background-color: #ddd;
+    a:hover {
+        background: linear-gradient(
+            90deg,
+            rgb(228, 14, 14) 0%,
+            rgb(238, 27, 118) 100%
+        );
+        background-clip: text;
+        color: transparent;
     }
     &:first-child {
         margin-top: 6px;
@@ -43,9 +49,7 @@
 .spacer {
     margin-top: 16px;
 }
-.item + .item {
-    //     display: none;
-}
+
 .item:hover .group {
     display: block;
 }

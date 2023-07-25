@@ -1,9 +1,5 @@
 import ClassNames from "classnames/bind";
 import styles from "./Discovery.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const cx = ClassNames.bind(styles);
 function Discovery({ children }) {

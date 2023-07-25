@@ -4,7 +4,6 @@ import MovieCard from "~/Components/Page/Movies/MovieCard.jsx";
 import styles from "./MovieList.module.scss";
 import tmdb from "~/API/tmdb";
 import { request } from "~/API/request";
-
 const cx = classNames.bind(styles);
 
 function MovieList({ page, fetch }) {
@@ -21,7 +20,6 @@ function MovieList({ page, fetch }) {
         };
         fetchMovies();
     }, [fetch]);
-
     return (
         <div className={cx("wrapper")}>
             <div className={cx("inner")}>

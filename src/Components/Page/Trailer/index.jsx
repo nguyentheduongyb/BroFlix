@@ -1,13 +1,7 @@
-import {
-    faEllipsis,
-    faEllipsisVertical,
-    faPlay,
-    faPlusCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
 import styles from "./Trailer.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleDot, faCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
 const cx = classNames.bind(styles);
 

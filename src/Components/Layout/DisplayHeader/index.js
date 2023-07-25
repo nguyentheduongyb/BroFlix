@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import LoginMain from "~/Components/Page/LoginMain";
 
 const DisplayContext = createContext();
 
@@ -8,6 +9,8 @@ function DisplayProvider({ children }) {
     const [isLogin, setIsLogin] = useState(false);
     const [number, setNumber] = useState("");
     const [password, setPassword] = useState("");
+    const [imgAvatar, setImgAvatar] = useState("");
+    const [formLogin, setFormLogin] = useState(<LoginMain />);
     const [data, setData] = useState({
         number: number,
         password: password,
@@ -15,14 +18,26 @@ function DisplayProvider({ children }) {
 
     const toggleDisplay = () => {
         setDisplay(!display);
+        setType("main");
     };
     const toggleClose = () => {
         setDisplay(!display);
-        // setIsLogin(true);
         setType("main");
     };
-    const displayForm = (e) => {
+    const typeLogin = (e) => {
         setType(e.type);
+        setFormLogin(e.form);
+        console.log(e.form);
+    };
+    const handleLoginFacebook = (data) => {
+        setIsLogin(true);
+        setImgAvatar(data.picture.data.url);
+        setDisplay(!display);
+    };
+    const handleLogout = () => {
+        alert("Do you want to sign out?");
+        setImgAvatar("");
+        setType("main");
     };
     const item = {
         display,
@@ -30,8 +45,11 @@ function DisplayProvider({ children }) {
         toggleClose,
         type,
         isLogin,
+        handleLoginFacebook,
         setIsLogin,
-        displayForm,
+        typeLogin,
+        imgAvatar,
+        handleLogout,
     };
     return (
         <DisplayContext.Provider value={item}>

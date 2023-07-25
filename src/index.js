@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "~/App.js";
 import GlobalStyles from "./Components/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
-import { DisplayProvider } from "~/Components/Layout/Components/Header/DisplayProvider";
+import { DisplayProvider } from "~/Components/Layout/DisplayHeader";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

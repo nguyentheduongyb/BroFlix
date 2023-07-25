@@ -11,6 +11,7 @@ import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 import ClassNames from "classnames/bind";
 import styles from "./Search.module.scss";
+import { useParams } from "react-router-dom";
 
 const cx = ClassNames.bind(styles);
 
@@ -20,11 +21,16 @@ function Search(props) {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [blur, setBlur] = useState(false);
-
+    const { id } = useParams();
     const input = useRef();
-
+    const [hidden, setHidden] = useState(false);
     const API =
         "https://api.themoviedb.org/3/tv/popular?api_key=0e7933ccb96aa8a6aa3112ae73201b82&language=en-US&page=2";
+
+    useEffect(() => {
+        setHidden(true);
+        setInputValue("");
+    }, [id]);
 
     useEffect(() => {
         axios.get(API).then((response) => {
@@ -32,6 +38,7 @@ function Search(props) {
         });
     }, []);
     const handleSearch = (e) => {
+        setHidden(false);
         if (!!e.target.value.trim()) {
             setBlur(false);
             setLoading(true);
@@ -64,14 +71,10 @@ function Search(props) {
     const handleClick = () => {
         setBlur(false);
     };
-    const handleClickChild = () => {
-        setInputValue("");
-        setSearchResults([]);
-    };
 
     return (
         <Tippy
-            visible={searchResults.length > 0 || inputValue}
+            visible={(searchResults.length > 0 || inputValue) && !hidden}
             interactive
             appendTo={() => document.body}
             onClickOutside={handleBlur}
@@ -86,12 +89,9 @@ function Search(props) {
                                     ? "No results found"
                                     : "Movies"}
                             </h4>
+
                             {searchResults.map((item, index) => (
-                                <MovieItems
-                                    // onClick={handleClickChild}
-                                    key={index}
-                                    item={item}
-                                />
+                                <MovieItems key={index} item={item} />
                             ))}
                         </PopperWrapper>
                     )}

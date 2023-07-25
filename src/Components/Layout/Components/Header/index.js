@@ -2,8 +2,8 @@
 import ClassNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
-import { useContext, useRef, useEffect } from "react";
-import { DisplayContext } from "~/Components/Layout/Components/Header/DisplayProvider";
+import { useContext } from "react";
+import { DisplayContext } from "~/Components/Layout/DisplayHeader";
 import images from "~/assets/images/";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
@@ -13,15 +13,13 @@ import Search from "~/Components/Page/Search";
 const cx = ClassNames.bind(styles);
 
 function Header() {
-    const display = useContext(DisplayContext);
-    const loginRef = useRef();
-    const avatarRef = useRef();
-    useEffect(() => {
-        if (display.isLogin) {
-            loginRef.current.style.display = "none";
-            avatarRef.current.style.display = "block";
-        }
-    });
+    const displayHeader = useContext(DisplayContext);
+    // useEffect(() => {
+    //     if (displayHeader.isLogin) {
+    //         loginRef.current.style.display = "none";
+    //         avatarRef.current.style.display = "block";
+    //     }
+    // });
 
     return (
         <header className={cx("wrapper")}>
@@ -46,18 +44,21 @@ function Header() {
                 <Search />
                 <div className={cx("actions")}>
                     <div className={cx("language")}>VI</div>
-                    <div
-                        ref={loginRef}
-                        onClick={display.toggleDisplay}
-                        className={cx("login")}
-                    >
-                        Login
-                    </div>
-
-                    <div className={cx("avatar")} ref={avatarRef}>
-                        <img src={images.ntd}></img>
-                    </div>
-
+                    {displayHeader.imgAvatar ? (
+                        <div
+                            onClick={displayHeader.handleLogout}
+                            className={cx("avatar")}
+                        >
+                            <img src={displayHeader.imgAvatar}></img>
+                        </div>
+                    ) : (
+                        <div
+                            onClick={displayHeader.toggleDisplay}
+                            className={cx("login")}
+                        >
+                            Login
+                        </div>
+                    )}
                     <i className={cx("more")}>
                         <FontAwesomeIcon
                             className={cx("icon")}

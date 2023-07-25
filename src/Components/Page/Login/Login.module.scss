@@ -1,13 +1,15 @@
 .wrapper {
     width: 100%;
-    display: none;
+    // display: none;
     height: 100%;
     z-index: 9999;
     top: 0;
     right: 0;
-    position: absolute;
+    bottom: 0;
+    position: fixed;
     justify-content: center;
     align-items: center;
+    overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 
     ::-webkit-scrollbar {
@@ -67,6 +69,7 @@
     border-radius: 8px;
     width: 483px;
     background-color: #fff;
+    inset: 0px;
 }
 .heading {
     display: flex;
@@ -97,6 +100,7 @@
     height: 343px;
     min-height: 343px;
     justify-content: center;
+    align-items: center;
 }
 
 .footer {

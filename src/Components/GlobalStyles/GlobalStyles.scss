@@ -56,7 +56,7 @@ li {
 }
 @media (min-width: 1113px) {
     .container {
-        width: var(--default-layout-width, 1280px);
+        // width: var(--default-layout-width, 1280px);
     }
 }
 @media (min-width: 740px) and (max-width: 1023px) {

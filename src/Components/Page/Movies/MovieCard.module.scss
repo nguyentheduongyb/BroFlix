@@ -1,5 +1,36 @@
 .poster {
     border-radius: 8px;
+    position: relative;
+}
+.actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    display: none;
+
+    h6 {
+        display: inline-block;
+    }
+}
+
+.action {
+    margin: 8px 0;
+}
+.hover {
+    transition: transform 0.2s;
+    cursor: grab;
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:hover .actions {
+        display: flex;
+    }
 }
 .time {
     color: rgba(0, 0, 0, 0.6);
